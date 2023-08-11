@@ -1,0 +1,14 @@
+# 파이썬 캐시 파일
+__pycache__
+
+#DB file
+db.splite3
+
+# static file
+/static
+
+# media file
+/media
+
+# pycham
+.idea
