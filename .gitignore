@@ -5,7 +5,7 @@ __pycache__
 db.splite3
 
 # static file
- /static
+# /static
 
 # media file
 /media
