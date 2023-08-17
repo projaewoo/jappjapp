@@ -1,2 +1,5 @@
 django~=4.0
 django-cors-headers
+django-storages
+boto3
+django-environ
