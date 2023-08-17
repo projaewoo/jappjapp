@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os.path
+import environ
 from pathlib import Path
+import django
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -135,3 +137,26 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# AWS LIGHTSAIL SETTINGS
+env = environ.Env()
+environ.Env.read_env()
+
+AWS_STORAGE_BUCKET_NAME = env.str("AWS_STORAGE_BUCKET_NAME", default="")
+AWS_S3_ACCESS_KEY_ID = env.str("AWS_LIGHTSAIL_BUCKET_ACCESS_KEY_ID", default="")
+AWS_S3_SECRET_ACCESS_KEY = env.str("AWS_LIGHTSAIL_BUCKET_SECRET_KEY_ID", default="")
+AWS_S3_REGION_NAME = env.str("AWS_LIGHTSAIL_REGION_NAME", default="")
+
+if AWS_S3_ACCESS_KEY_ID and AWS_S3_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME:
+    if django.VERSION < (4, 2):
+        DEFAULT_FILE_STORAGE = "core.storages.aws.AwsMediaStorage"
+        STATICFILES_STORAGE = "core.storages.aws.AwsStaticStorage"
+    else:
+        STORAGES = {
+            "default": {
+                "BACKEND": "core.storages.aws.AwsMediaStorage",
+            },
+            "staticfiles": {
+                "BACKEND": "core.storages.aws.AwsStaticStorage",
+            }
+        }
