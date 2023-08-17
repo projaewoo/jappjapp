@@ -130,8 +130,8 @@ CORS_ALLOWED_ORIGINS = [
 STATIC_URL = "https://jappjapp.com/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'jappjapp', 'static')
-    # 프로젝트 전반적인 static 파일은 jappjapp/static 폴더에 위치
+    os.path.join(BASE_DIR, 'home', 'build', 'static')
+    # static 파일을 찾을 때, STATIC_ROOT와 추가적으로 home/build/static을 참조하도록
 ]
 
 # Default primary key field type
