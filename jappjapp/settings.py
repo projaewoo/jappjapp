@@ -143,9 +143,9 @@ env = environ.Env()
 environ.Env.read_env()
 
 AWS_STORAGE_BUCKET_NAME = env.str("AWS_STORAGE_BUCKET_NAME", default="")
-AWS_S3_ACCESS_KEY_ID = env.str("AWS_LIGHTSAIL_BUCKET_ACCESS_KEY_ID", default="")
-AWS_S3_SECRET_ACCESS_KEY = env.str("AWS_LIGHTSAIL_BUCKET_SECRET_KEY_ID", default="")
-AWS_S3_REGION_NAME = env.str("AWS_LIGHTSAIL_REGION_NAME", default="")
+AWS_S3_ACCESS_KEY_ID = env.str("AWS_S3_ACCESS_KEY_ID", default="")
+AWS_S3_SECRET_ACCESS_KEY = env.str("AWS_S3_SECRET_ACCESS_KEY", default="")
+AWS_S3_REGION_NAME = env.str("AWS_S3_REGION_NAME", default="")
 
 if AWS_S3_ACCESS_KEY_ID and AWS_S3_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME:
     if django.VERSION < (4, 2):
