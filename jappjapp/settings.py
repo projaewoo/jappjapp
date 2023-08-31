@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
     'corsheaders',
-    "home",
+    "homepage",
 ]
 
 MIDDLEWARE = [
@@ -60,7 +61,7 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-            os.path.join(BASE_DIR, 'home/build'),
+            os.path.join(BASE_DIR, 'homepage/build'),
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -121,18 +122,28 @@ USE_TZ = True
 
 # CORS 설정
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000"
+    "http://localhost:3000",
+    "http://127.0.0.1:8000",
 ]
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+# 원격에서 static 파일 import (검증 필요)
 STATIC_URL = "https://jappjapp.com/static/"
+# local에서 static 파일 import
+# STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR, 'home', 'build', 'static')
-    # static 파일을 찾을 때, STATIC_ROOT와 추가적으로 home/build/static을 참조하도록
+    # os.path.join(BASE_DIR, 'homepage', 'build', 'static')
+    # static 파일을 찾을 때, STATIC_ROOT와 추가적으로 homepage/build/static을 참조하도록
 ]
+
+
+# MEDIA SETTINGS
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

@@ -3,3 +3,5 @@ django-cors-headers
 django-storages
 boto3
 django-environ
+Pillow
+djangorestframework~=3.0
