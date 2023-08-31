@@ -1,0 +1,25 @@
+<div class="container">
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- title 입력 필드 -->
+        <div class="mb-3">
+            <label for="title" class="form-label">제목</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+
+        <!-- content 입력 필드 -->
+        <div class="mb-3">
+            <label for="content" class="form-label">내용</label>
+            <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+        </div>
+
+        <!-- imgFile 파일 업로드 필드 -->
+        <div class="mb-3">
+            <label for="imgFile" class="form-label">이미지 파일</label>
+            <input type="file" class="form-control" id="imgFile" name="imgFile" required>
+        </div>
+
+        <input type="submit" class="btn btn-primary col-12" value="제출">
+    </form>
+</div>
