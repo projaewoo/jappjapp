@@ -6,9 +6,7 @@ from django.conf import settings
 
 
 urlpatterns = [
-    path('', views.hello, name='hello'),
-    # TODO. react로 작성한 페이지도 로드 되게끔
-    # path('', TemplateView.as_view(template_name='index.html')),
-
+    path('', TemplateView.as_view(template_name='react_app.html')),
     path('uploads/', views.upload_file, name='upload'),
+    path('reactApp/', TemplateView.as_view(template_name='react_app.html')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

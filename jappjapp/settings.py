@@ -130,15 +130,13 @@ CORS_ALLOWED_ORIGINS = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-# 원격에서 static 파일 import (검증 필요)
-STATIC_URL = "https://jappjapp.com/static/"
+# 원격에서 static 파일 import
+# STATIC_URL = "https://jappjapp.com/static/"
+
 # local에서 static 파일 import
-# STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR, 'homepage', 'build', 'static')
-    # static 파일을 찾을 때, STATIC_ROOT와 추가적으로 homepage/build/static을 참조하도록
-]
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATICFILES_DIRS = []
 
 
 # MEDIA SETTINGS
@@ -159,16 +157,16 @@ AWS_S3_ACCESS_KEY_ID = env.str("AWS_S3_ACCESS_KEY_ID", default="")
 AWS_S3_SECRET_ACCESS_KEY = env.str("AWS_S3_SECRET_ACCESS_KEY", default="")
 AWS_S3_REGION_NAME = env.str("AWS_S3_REGION_NAME", default="")
 
-if AWS_S3_ACCESS_KEY_ID and AWS_S3_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME:
-    if django.VERSION < (4, 2):
-        DEFAULT_FILE_STORAGE = "core.storages.aws.AwsMediaStorage"
-        STATICFILES_STORAGE = "core.storages.aws.AwsStaticStorage"
-    else:
-        STORAGES = {
-            "default": {
-                "BACKEND": "core.storages.aws.AwsMediaStorage",
-            },
-            "staticfiles": {
-                "BACKEND": "core.storages.aws.AwsStaticStorage",
-            }
-        }
+# if AWS_S3_ACCESS_KEY_ID and AWS_S3_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME:
+#     if django.VERSION < (4, 2):
+#         DEFAULT_FILE_STORAGE = "core.storages.aws.AwsMediaStorage"
+#         STATICFILES_STORAGE = "core.storages.aws.AwsStaticStorage"
+#     else:
+#         STORAGES = {
+#             "default": {
+#                 "BACKEND": "core.storages.aws.AwsMediaStorage",
+#             },
+#             "staticfiles": {
+#                 "BACKEND": "core.storages.aws.AwsStaticStorage",
+#             }
+#         }
