@@ -4,13 +4,9 @@ __pycache__/
 # Django 관련
 db.sqlite3
 migrations/
-media/
 
 # static file
  /static
-
-# media file
-/media
 
 # pycham
 .idea

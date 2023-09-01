@@ -136,7 +136,9 @@ CORS_ALLOWED_ORIGINS = [
 # local에서 static 파일 import
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-STATICFILES_DIRS = []
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'homepage/static'),
+]
 
 
 # MEDIA SETTINGS
