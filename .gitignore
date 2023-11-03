@@ -6,7 +6,7 @@ db.sqlite3
 migrations/
 
 # static file
- /static
+/static
 
 # pycham
 .idea
